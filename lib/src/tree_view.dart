@@ -6,10 +6,11 @@ import 'tree_view_controller.dart';
 import 'tree_view_theme.dart';
 
 /// Callback to build a widget for [TreeNode].
-typedef NodeBuilder = Widget Function(BuildContext context, TreeNode node);
+typedef NodeBuilder<T> = Widget Function(
+    BuildContext context, TreeNode<T> node);
 
 /// A simple, fancy and highly customizable hierarchy visualization Widget.
-class TreeView extends StatefulWidget {
+class TreeView<T> extends StatefulWidget {
   /// Creates a [TreeView].
   ///
   /// Take a look at [NodeWidget] for your [nodeBuilder].
@@ -80,7 +81,7 @@ class TreeView extends StatefulWidget {
   ///   );
   /// }
   /// ```
-  final NodeBuilder nodeBuilder;
+  final NodeBuilder<T> nodeBuilder;
 
   /// The height each node will take, its more efficient (for the scrolling
   /// machinery) than letting the nodes determine their own height. (Also used
